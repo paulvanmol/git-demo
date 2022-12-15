@@ -1,6 +1,6 @@
 * Assumptions: DM caslib (change location to match your environment) and SAS Compute library (User folder);
 
-cas casauto sessopts=(caslib=casuser metrics=true);
+cas mysession sessopts=(caslib=casuser metrics=true);
 
 %let gateuserid=&sysuserid ;
 %put My Userid is: &gateuserid ;
@@ -18,9 +18,9 @@ run;
 /* path type CASLIB, source located on CAS controller */
 /* commented since its pre-defined */
 /* CHANGE location to match your environmnet */
-/*
-caslib DM path="/gelcontent/demo/DM/data/" type=path;
-*/
+
+caslib DM path="/home/student/Courses/PGVY35/data/" type=path;
+
 
 /* drop in-memory CAS table  */
 proc casutil ;
@@ -44,4 +44,4 @@ proc casutil ;
    droptable casdata="&gateuserid._DATA_prdsale" incaslib="DM" quiet;
 quit ;
 
-cas casauto terminate;
+cas mysession terminate;
